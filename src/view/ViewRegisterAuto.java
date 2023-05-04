@@ -1,6 +1,6 @@
 package view;
 
-import connection.MySQL;
+import db.MySQL;
 import entity.Automovel;
 import javax.swing.JOptionPane;
 import model.TDBComboBox;
@@ -334,13 +334,9 @@ public class ViewRegisterAuto extends javax.swing.JFrame {
     }//GEN-LAST:event_rbArActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        
-        try {
-            
-            //CODIGO DO WORK
-            mysqldb.conectaBanco();
-            Automovel novo_auto = new Automovel();
-
+        mysqldb.conectaBanco();
+        Automovel novo_auto = new Automovel();
+        try { 
             novo_auto.setMarca((String)cbMarca.getSelectedItem());
             novo_auto.setModelo(txtModelo.getText());
             novo_auto.setCambio((String)cbCambio.getSelectedItem());
@@ -361,42 +357,12 @@ public class ViewRegisterAuto extends javax.swing.JFrame {
             novo_auto.setRodas(rbRodas.isSelected());
             novo_auto.setRetrovisor(rbRetrovisor.isSelected());
             novo_auto.setMultimidia(rbMultimidia.isSelected());
-            
-            System.out.println(novo_auto);
+                  
+            boolean status = false;            
+            status = mysqldb.RegisterAuto(novo_auto);
 
-		String query = "INSERT INTO automovel VALUES ("
-                + "'" + novo_auto.getMarca() + "',"
-                + "'" + novo_auto.getModelo() + "',"
-                + "'" + novo_auto.getCambio() + "',"
-                + "'" + novo_auto.getAno() + "',"
-                + "'" + novo_auto.getCombustivel() + "',"
-                + "'" + novo_auto.getCor() + "',"
-                + "'" + novo_auto.getPlaca() + "',"
-                + "'" + novo_auto.getRenavam() + "',"
-                + "'" + novo_auto.getQuilometragem() + "',"
-                + "'" + novo_auto.getValor() + "',"
-                + "'" + novo_auto.getObservacao() + "',"
-                        
-                + "" + novo_auto.isAlarme() + ","
-                + "" + novo_auto.isFreio() + ","
-                + "" + novo_auto.isAr() + ","
-                + "" + novo_auto.isVidro() + ","
-                + "" + novo_auto.isDirecao() + ","
-                + "" + novo_auto.isRodas() + ","
-                + "" + novo_auto.isRetrovisor() + ","
-                + "" + novo_auto.isMultimidia() + ");";
-                
-             
-            
-            
-            int status = 0;
-            
-            status = this.mysqldb.insertSQL(query);
-
-            if (status == 1) {
-                
+            if (status == true) {
                 JOptionPane.showMessageDialog(rootPane, "Automóvel cadastrado com sucesso!");
-                
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Houve problemas no cadastro do automóvel. Revise os dados.");
             }
@@ -480,9 +446,4 @@ public class ViewRegisterAuto extends javax.swing.JFrame {
     private javax.swing.JTextField txtValor;
     // End of variables declaration//GEN-END:variables
 
-    private static class cbMarca {
-
-        public cbMarca() {
-        }
-    }
 }

@@ -8,7 +8,7 @@ public class ViewSearchYearModel extends javax.swing.JFrame {
         initComponents();
         tpTela.setEnabled(false);
         pnModelo.setVisible(true);
-        pnAno.setEnabled(false);
+        pnAno.setEnabled(true);
     }
 
     @SuppressWarnings("unchecked")

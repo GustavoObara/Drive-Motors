@@ -1,6 +1,6 @@
 package model;
 
-import connection.MySQL;
+import db.MySQL;
 import javax.swing.JComboBox;
 
 public class TDBComboBox {    

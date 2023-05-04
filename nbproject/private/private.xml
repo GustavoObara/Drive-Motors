@@ -3,9 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/db/MySQL.java</file>
             <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/view/ViewRegisterAuto.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/view/ViewSearchAuto.java</file>
-            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/view/ViewSearchYearModel.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/view/ViewLogin.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/view/ViewLoading.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/view/ViewSearchClient.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/view/ViewRegisterClient.java</file>
+            <file>file:/C:/Users/gusta/OneDrive/Documentos/NetBeansProjects/Consultores.com/src/view/ViewSystemMain.java</file>
         </group>
     </open-files>
 </project-private>

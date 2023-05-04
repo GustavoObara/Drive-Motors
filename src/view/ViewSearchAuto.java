@@ -1,6 +1,6 @@
 package view;
 
-import connection.MySQL;
+import db.MySQL;
 import entity.Automovel;
 import javax.swing.JOptionPane;
 import model.TDBComboBox;

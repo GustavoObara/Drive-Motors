@@ -6,9 +6,8 @@ import java.security.NoSuchAlgorithmException;
 public class Usuario {
     
     private String login = null;
-    private String senha = null;
-    private String email = null;
-    private String nome = null;
+    private String password = null;
+    private String name = null;
     
     
     public static char[] hexCodes(byte[] text) {
@@ -38,27 +37,19 @@ public class Usuario {
         this.login = newValue;
     }
     
-    public String getSenha(){
-        return this.senha;
+    public String getPassword(){
+        return this.password;
     }
     
-    public void setSenha(String newValue){
-        this.senha = newValue;
+    public void setPassword(String newValue){
+        this.password = newValue;
     }
     
-    public String getEmail(){
-        return this.email;
+    public String getName(){
+        return this.name;
     }
     
-    public void setEmail(String newValue){
-        this.email = newValue;
-    }
-    
-    public String getNome(){
-        return this.nome;
-    }
-    
-    public void setNome(String newValue){
-        this.nome = newValue;
+    public void setName(String newValue){
+        this.name = newValue;
     }
 }

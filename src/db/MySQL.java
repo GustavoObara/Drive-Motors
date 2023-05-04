@@ -1,5 +1,7 @@
-package connection;
+package db;
 
+import entity.Automovel;
+import entity.Usuario;
 import java.sql.Connection;
 import java.sql.Statement;
 import java.sql.DriverManager;
@@ -102,9 +104,6 @@ public class MySQL {
             this.statement = conn.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE, ResultSet.CONCUR_READ_ONLY);
             this.resultSet = this.statement.executeQuery(sql);
 
-//            while (this.getResultSet().next()) {
-//                System.out.println(this.getResultSet().getInt(1));
-//            }
         } catch (SQLException sqlex) {
             sqlex.printStackTrace();
         }
@@ -128,5 +127,53 @@ public class MySQL {
         }
         return true;
     }
+    
+    public boolean RegisterUser(Usuario user){                
+        try {
+            String query ="INSERT INTO usuario "
+                         +"(nm_login,senha,nm_user)"
+                         +"VALUES('" 
+                         + user.getLogin() + "','" 
+                         + user.getPassword() + "',' "
+                         + user.getName() + "')";
+            insertSQL(query);
+            return true;
+        } catch (Exception e) {
+            return false;
+        } 
+    }
+
+    public boolean RegisterAuto(Automovel novo_auto){
+        try {
+            String query = "INSERT INTO automovel VALUES ("
+                + "'" + novo_auto.getMarca() + "',"
+                + "'" + novo_auto.getModelo() + "',"
+                + "'" + novo_auto.getCambio() + "',"
+                + "'" + novo_auto.getAno() + "',"
+                + "'" + novo_auto.getCombustivel() + "',"
+                + "'" + novo_auto.getCor() + "',"
+                + "'" + novo_auto.getPlaca() + "',"
+                + "'" + novo_auto.getRenavam() + "',"
+                + "'" + novo_auto.getQuilometragem() + "',"
+                + "'" + novo_auto.getValor() + "',"
+                + "'" + novo_auto.getObservacao() + "',"
+                        
+                + "" + novo_auto.isAlarme() + ","
+                + "" + novo_auto.isFreio() + ","
+                + "" + novo_auto.isAr() + ","
+                + "" + novo_auto.isVidro() + ","
+                + "" + novo_auto.isDirecao() + ","
+                + "" + novo_auto.isRodas() + ","
+                + "" + novo_auto.isRetrovisor() + ","
+                + "" + novo_auto.isMultimidia() + ");";
+            insertSQL(query);
+            return true;
+        } catch (Exception e) {
+            return false;
+        } 
+    }
+    
+    
+    
 }
 

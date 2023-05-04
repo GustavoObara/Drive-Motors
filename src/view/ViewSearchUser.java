@@ -1,6 +1,6 @@
 package view;
 
-import connection.MySQL;
+import db.MySQL;
 import entity.Usuario;
 import javax.swing.JOptionPane;
 
@@ -167,7 +167,8 @@ public class ViewSearchUser extends javax.swing.JFrame {
             else {
                 String query = "select * "
                              + "from usuario "
-                             + "where nm_login = '" + txtLogin.getText()+ "';";
+                             + "where nm_login = '" 
+                             + txtLogin.getText()+ "';";
                 
                 this.mysqldb.executarSQL(query);
                 
@@ -175,16 +176,16 @@ public class ViewSearchUser extends javax.swing.JFrame {
                 
                 while (this.mysqldb.getResultSet().next()) {
 //                  novo_usuario.setLogin(this.mysqldb.getResultSet().getString(2));
-                    novo_usuario.setSenha(this.mysqldb.getResultSet().getString(4));
-                    novo_usuario.setNome(this.mysqldb.getResultSet().getString(3));
+                    novo_usuario.setPassword(this.mysqldb.getResultSet().getString(4));
+                    novo_usuario.setName(this.mysqldb.getResultSet().getString(3));
                     novo_usuario.setLogin(this.mysqldb.getResultSet().getString(2));
                 }
                 
                 if (!novo_usuario.getLogin().isEmpty()){
                     txtLogin.setEnabled(false);
                     
-                    txtName.setText(novo_usuario.getNome());
-                    txtPassword.setText(novo_usuario.getSenha());
+                    txtName.setText(novo_usuario.getName());
+                    txtPassword.setText(novo_usuario.getPassword());
                 }
                 else {
                     JOptionPane.showMessageDialog(rootPane, "O usuário procurado não existe na base de dados.");

@@ -1,6 +1,6 @@
 package view;
 
-import connection.MySQL;
+import db.MySQL;
 import entity.Usuario;
 import javax.swing.JOptionPane;
 import model.TDBComboBox;
@@ -10,7 +10,7 @@ import model.TDBComboBox;
 public class ViewRegisterUser extends javax.swing.JFrame {
     
     MySQL mysqldb = new MySQL();
-    Usuario user = new Usuario();
+    
     
     /**
      * Creates new form ViewRegisterUser
@@ -155,30 +155,29 @@ public class ViewRegisterUser extends javax.swing.JFrame {
     }//GEN-LAST:event_txtPassActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
-        mysqldb.conectaBanco();
-        
         try {
+            //Criação do objeto Usuário;
+            mysqldb.conectaBanco();
+            Usuario user = new Usuario();  
             String pass = user.setCriptografia(new String(txtPass.getPassword()));
+            user.setLogin(txtLogin.getText());
+            user.setPassword(pass);
+            user.setName(txtNome.getText());
+            //Envia para MySQL executar o Registro;
+            boolean status = mysqldb.RegisterUser(user);
             
-            String query = 
-                "INSERT INTO usuario(nm_login,senha,nm_user) "+
-                "VALUES('"+txtLogin.getText()+"','"+pass+"','"+txtNome.getText()+"')";
-            
-            int status = 0;
-            
-            status = this.mysqldb.insertSQL(query);
-
-            if (status == 1) {
+            if (status == true) {
                 JOptionPane.showMessageDialog(rootPane, "Usuário cadastrado com sucesso!");
                 this.setVisible(false);
             } else {
                 JOptionPane.showMessageDialog(rootPane, "Houve problemas no cadastro do usuário. Revise os dados.");
             }
+            
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar o usuário");
+                JOptionPane.showMessageDialog(rootPane, "Erro ao cadastrar o usuário");
         } finally {
             mysqldb.fechaBanco();
-        }
+        }       
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     /**
